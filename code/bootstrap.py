@@ -6,7 +6,7 @@ from util import *
 import concurrent.futures
 
 
-def ToM_MMS_job(p):
+def IMQ_MMS_job(p):
 
     dsf_x, dsf_y, mms, data, SS, SO, OS, mms_la, mms_ra, mms_lh, mms_rh = p
 
@@ -25,62 +25,62 @@ def ToM_MMS_job(p):
         mms_lh_sample = mms_lh[order]
         mms_rh_sample = mms_rh[order]
 
-        SS_sample_rdm = build_idm(SS_sample, excluded_pairs=data[1][i], metric=dsf_x)
-        SO_sample_rdm = build_idm(SO_sample, excluded_pairs=data[1][i], metric=dsf_x)
-        OS_sample_rdm = build_idm(OS_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        SS_sample_idm = build_idm(SS_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        SO_sample_idm = build_idm(SO_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        OS_sample_idm = build_idm(OS_sample, excluded_pairs=data[1][i], metric=dsf_x)
 
         if mms != None:
 
-            P, PS, PM, SC = mms
-            mms_la_sample_rdm = build_idm(patch(mms_la_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
-            mms_ra_sample_rdm = build_idm(patch(mms_ra_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
-            mms_lh_sample_rdm = build_idm(patch(mms_lh_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
-            mms_rh_sample_rdm = build_idm(patch(mms_rh_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
+            P, PS, PM, SD = mms
+            mms_la_sample_idm = build_idm(patch(mms_la_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
+            mms_ra_sample_idm = build_idm(patch(mms_ra_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
+            mms_lh_sample_idm = build_idm(patch(mms_lh_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
+            mms_rh_sample_idm = build_idm(patch(mms_rh_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
 
         else:
 
-            P, PS, PM, SC = False, None, None, None
-            mms_la_sample_rdm = build_idm(mms_la_sample, excluded_pairs=data[1][i], metric=dsf_y)
-            mms_ra_sample_rdm = build_idm(mms_ra_sample, excluded_pairs=data[1][i], metric=dsf_y)
-            mms_lh_sample_rdm = build_idm(mms_lh_sample, excluded_pairs=data[1][i], metric=dsf_y)
-            mms_rh_sample_rdm = build_idm(mms_rh_sample, excluded_pairs=data[1][i], metric=dsf_y)
+            P, PS, PM, SD = False, None, None, None
+            mms_la_sample_idm = build_idm(mms_la_sample, excluded_pairs=data[1][i], metric=dsf_y)
+            mms_ra_sample_idm = build_idm(mms_ra_sample, excluded_pairs=data[1][i], metric=dsf_y)
+            mms_lh_sample_idm = build_idm(mms_lh_sample, excluded_pairs=data[1][i], metric=dsf_y)
+            mms_rh_sample_idm = build_idm(mms_rh_sample, excluded_pairs=data[1][i], metric=dsf_y)
 
         result_ss_mms_la.append(
-            spearmanr(SS_sample_rdm, mms_la_sample_rdm))
+            spearmanr(SS_sample_idm, mms_la_sample_idm))
         result_ss_mms_ra.append(
-            spearmanr(SS_sample_rdm, mms_ra_sample_rdm))
+            spearmanr(SS_sample_idm, mms_ra_sample_idm))
         result_ss_mms_lh.append(
-            spearmanr(SS_sample_rdm, mms_lh_sample_rdm))
+            spearmanr(SS_sample_idm, mms_lh_sample_idm))
         result_ss_mms_rh.append(
-            spearmanr(SS_sample_rdm, mms_rh_sample_rdm))
+            spearmanr(SS_sample_idm, mms_rh_sample_idm))
 
         result_so_mms_la.append(
-            spearmanr(SO_sample_rdm, mms_la_sample_rdm))
+            spearmanr(SO_sample_idm, mms_la_sample_idm))
         result_so_mms_ra.append(
-            spearmanr(SO_sample_rdm, mms_ra_sample_rdm))
+            spearmanr(SO_sample_idm, mms_ra_sample_idm))
         result_so_mms_lh.append(
-            spearmanr(SO_sample_rdm, mms_lh_sample_rdm))
+            spearmanr(SO_sample_idm, mms_lh_sample_idm))
         result_so_mms_rh.append(
-            spearmanr(SO_sample_rdm, mms_rh_sample_rdm))
+            spearmanr(SO_sample_idm, mms_rh_sample_idm))
 
         result_os_mms_la.append(
-            spearmanr(OS_sample_rdm, mms_la_sample_rdm))
+            spearmanr(OS_sample_idm, mms_la_sample_idm))
         result_os_mms_ra.append(
-            spearmanr(OS_sample_rdm, mms_ra_sample_rdm))
+            spearmanr(OS_sample_idm, mms_ra_sample_idm))
         result_os_mms_lh.append(
-            spearmanr(OS_sample_rdm, mms_lh_sample_rdm))
+            spearmanr(OS_sample_idm, mms_lh_sample_idm))
         result_os_mms_rh.append(
-            spearmanr(OS_sample_rdm, mms_rh_sample_rdm))
+            spearmanr(OS_sample_idm, mms_rh_sample_idm))
 
     configuration = dsf_x+'-'+dsf_y+'-' + \
-        str(P)+'-'+str(PS)+'-'+str(PM)+'-'+str(SC)
+        str(P)+'-'+str(PS)+'-'+str(PM)+'-'+str(SD)
 
     print(configuration)
 
     return configuration, result_ss_mms_la, result_ss_mms_ra, result_ss_mms_lh, result_ss_mms_rh, result_so_mms_la, result_so_mms_ra, result_so_mms_lh, result_so_mms_rh, result_os_mms_la, result_os_mms_ra, result_os_mms_lh, result_os_mms_rh
 
 
-def ToM_rsFC_job(p):
+def IMQ_rsFC_job(p):
 
     dsf_x, dsf_y, mms, data, SS, SO, OS, rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh = p
 
@@ -99,41 +99,41 @@ def ToM_rsFC_job(p):
         rsfc_lh_sample = rsfc_lh[order]
         rsfc_rh_sample = rsfc_rh[order]
 
-        SS_sample_rdm = build_idm(SS_sample, excluded_pairs=data[1][i], metric=dsf_x)
-        SO_sample_rdm = build_idm(SO_sample, excluded_pairs=data[1][i], metric=dsf_x)
-        OS_sample_rdm = build_idm(OS_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        SS_sample_idm = build_idm(SS_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        SO_sample_idm = build_idm(SO_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        OS_sample_idm = build_idm(OS_sample, excluded_pairs=data[1][i], metric=dsf_x)
 
-        rsfc_la_sample_rdm = build_idm(rsfc_la_sample, excluded_pairs=data[1][i], metric=dsf_y)
-        rsfc_ra_sample_rdm = build_idm(rsfc_ra_sample, excluded_pairs=data[1][i], metric=dsf_y)
-        rsfc_lh_sample_rdm = build_idm(rsfc_lh_sample, excluded_pairs=data[1][i], metric=dsf_y)
-        rsfc_rh_sample_rdm = build_idm(rsfc_rh_sample, excluded_pairs=data[1][i], metric=dsf_y)
+        rsfc_la_sample_idm = build_idm(rsfc_la_sample, excluded_pairs=data[1][i], metric=dsf_y)
+        rsfc_ra_sample_idm = build_idm(rsfc_ra_sample, excluded_pairs=data[1][i], metric=dsf_y)
+        rsfc_lh_sample_idm = build_idm(rsfc_lh_sample, excluded_pairs=data[1][i], metric=dsf_y)
+        rsfc_rh_sample_idm = build_idm(rsfc_rh_sample, excluded_pairs=data[1][i], metric=dsf_y)
 
         result_ss_rsfc_la.append(
-            spearmanr(SS_sample_rdm, rsfc_la_sample_rdm))
+            spearmanr(SS_sample_idm, rsfc_la_sample_idm))
         result_ss_rsfc_ra.append(
-            spearmanr(SS_sample_rdm, rsfc_ra_sample_rdm))
+            spearmanr(SS_sample_idm, rsfc_ra_sample_idm))
         result_ss_rsfc_lh.append(
-            spearmanr(SS_sample_rdm, rsfc_lh_sample_rdm))
+            spearmanr(SS_sample_idm, rsfc_lh_sample_idm))
         result_ss_rsfc_rh.append(
-            spearmanr(SS_sample_rdm, rsfc_rh_sample_rdm))
+            spearmanr(SS_sample_idm, rsfc_rh_sample_idm))
 
         result_so_rsfc_la.append(
-            spearmanr(SO_sample_rdm, rsfc_la_sample_rdm))
+            spearmanr(SO_sample_idm, rsfc_la_sample_idm))
         result_so_rsfc_ra.append(
-            spearmanr(SO_sample_rdm, rsfc_ra_sample_rdm))
+            spearmanr(SO_sample_idm, rsfc_ra_sample_idm))
         result_so_rsfc_lh.append(
-            spearmanr(SO_sample_rdm, rsfc_lh_sample_rdm))
+            spearmanr(SO_sample_idm, rsfc_lh_sample_idm))
         result_so_rsfc_rh.append(
-            spearmanr(SO_sample_rdm, rsfc_rh_sample_rdm))
+            spearmanr(SO_sample_idm, rsfc_rh_sample_idm))
 
         result_os_rsfc_la.append(
-            spearmanr(OS_sample_rdm, rsfc_la_sample_rdm))
+            spearmanr(OS_sample_idm, rsfc_la_sample_idm))
         result_os_rsfc_ra.append(
-            spearmanr(OS_sample_rdm, rsfc_ra_sample_rdm))
+            spearmanr(OS_sample_idm, rsfc_ra_sample_idm))
         result_os_rsfc_lh.append(
-            spearmanr(OS_sample_rdm, rsfc_lh_sample_rdm))
+            spearmanr(OS_sample_idm, rsfc_lh_sample_idm))
         result_os_rsfc_rh.append(
-            spearmanr(OS_sample_rdm, rsfc_rh_sample_rdm))
+            spearmanr(OS_sample_idm, rsfc_rh_sample_idm))
 
     configuration = dsf_x+'-'+dsf_y
 
@@ -163,65 +163,65 @@ def rsFC_MMS_job(p):
         mms_lh_sample = mms_lh[order]
         mms_rh_sample = mms_rh[order]
 
-        rsfc_la_sample_rdm = build_idm(rsfc_la_sample, excluded_pairs=data[1][i], metric=dsf_x)
-        rsfc_ra_sample_rdm = build_idm(rsfc_ra_sample, excluded_pairs=data[1][i], metric=dsf_x)
-        rsfc_lh_sample_rdm = build_idm(rsfc_lh_sample, excluded_pairs=data[1][i], metric=dsf_x)
-        rsfc_rh_sample_rdm = build_idm(rsfc_rh_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        rsfc_la_sample_idm = build_idm(rsfc_la_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        rsfc_ra_sample_idm = build_idm(rsfc_ra_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        rsfc_lh_sample_idm = build_idm(rsfc_lh_sample, excluded_pairs=data[1][i], metric=dsf_x)
+        rsfc_rh_sample_idm = build_idm(rsfc_rh_sample, excluded_pairs=data[1][i], metric=dsf_x)
 
         if mms != None:
 
-            P, PS, PM, SC = mms
-            mms_la_sample_rdm = build_idm(patch(mms_la_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
-            mms_ra_sample_rdm = build_idm(patch(mms_ra_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
-            mms_lh_sample_rdm = build_idm(patch(mms_lh_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
-            mms_rh_sample_rdm = build_idm(patch(mms_rh_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
+            P, PS, PM, SD = mms
+            mms_la_sample_idm = build_idm(patch(mms_la_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
+            mms_ra_sample_idm = build_idm(patch(mms_ra_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
+            mms_lh_sample_idm = build_idm(patch(mms_lh_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
+            mms_rh_sample_idm = build_idm(patch(mms_rh_sample, pm=PM, ps=PS, sd=SD), excluded_pairs=data[1][i], metric=dsf_y)
 
         else:
 
-            P, PS, PM, SC = False, None, None, None
-            mms_la_sample_rdm = build_idm(mms_la_sample, excluded_pairs=data[1][i], metric=dsf_y)
-            mms_ra_sample_rdm = build_idm(mms_ra_sample, excluded_pairs=data[1][i], metric=dsf_y)
-            mms_lh_sample_rdm = build_idm(mms_lh_sample, excluded_pairs=data[1][i], metric=dsf_y)
-            mms_rh_sample_rdm = build_idm(mms_rh_sample, excluded_pairs=data[1][i], metric=dsf_y)
+            P, PS, PM, SD = False, None, None, None
+            mms_la_sample_idm = build_idm(mms_la_sample, excluded_pairs=data[1][i], metric=dsf_y)
+            mms_ra_sample_idm = build_idm(mms_ra_sample, excluded_pairs=data[1][i], metric=dsf_y)
+            mms_lh_sample_idm = build_idm(mms_lh_sample, excluded_pairs=data[1][i], metric=dsf_y)
+            mms_rh_sample_idm = build_idm(mms_rh_sample, excluded_pairs=data[1][i], metric=dsf_y)
 
         result_rsfc_la_mms_la.append(
-            spearmanr(rsfc_la_sample_rdm, mms_la_sample_rdm))
+            spearmanr(rsfc_la_sample_idm, mms_la_sample_idm))
         result_rsfc_la_mms_ra.append(
-            spearmanr(rsfc_la_sample_rdm, mms_ra_sample_rdm))
+            spearmanr(rsfc_la_sample_idm, mms_ra_sample_idm))
         result_rsfc_la_mms_lh.append(
-            spearmanr(rsfc_la_sample_rdm, mms_lh_sample_rdm))
+            spearmanr(rsfc_la_sample_idm, mms_lh_sample_idm))
         result_rsfc_la_mms_rh.append(
-            spearmanr(rsfc_la_sample_rdm, mms_rh_sample_rdm))
+            spearmanr(rsfc_la_sample_idm, mms_rh_sample_idm))
 
         result_rsfc_ra_mms_la.append(
-            spearmanr(rsfc_ra_sample_rdm, mms_la_sample_rdm))
+            spearmanr(rsfc_ra_sample_idm, mms_la_sample_idm))
         result_rsfc_ra_mms_ra.append(
-            spearmanr(rsfc_ra_sample_rdm, mms_ra_sample_rdm))
+            spearmanr(rsfc_ra_sample_idm, mms_ra_sample_idm))
         result_rsfc_ra_mms_lh.append(
-            spearmanr(rsfc_ra_sample_rdm, mms_lh_sample_rdm))
+            spearmanr(rsfc_ra_sample_idm, mms_lh_sample_idm))
         result_rsfc_ra_mms_rh.append(
-            spearmanr(rsfc_ra_sample_rdm, mms_rh_sample_rdm))
+            spearmanr(rsfc_ra_sample_idm, mms_rh_sample_idm))
 
         result_rsfc_lh_mms_la.append(
-            spearmanr(rsfc_lh_sample_rdm, mms_la_sample_rdm))
+            spearmanr(rsfc_lh_sample_idm, mms_la_sample_idm))
         result_rsfc_lh_mms_ra.append(
-            spearmanr(rsfc_lh_sample_rdm, mms_ra_sample_rdm))
+            spearmanr(rsfc_lh_sample_idm, mms_ra_sample_idm))
         result_rsfc_lh_mms_lh.append(
-            spearmanr(rsfc_lh_sample_rdm, mms_lh_sample_rdm))
+            spearmanr(rsfc_lh_sample_idm, mms_lh_sample_idm))
         result_rsfc_lh_mms_rh.append(
-            spearmanr(rsfc_lh_sample_rdm, mms_rh_sample_rdm))
+            spearmanr(rsfc_lh_sample_idm, mms_rh_sample_idm))
 
         result_rsfc_rh_mms_la.append(
-            spearmanr(rsfc_rh_sample_rdm, mms_la_sample_rdm))
+            spearmanr(rsfc_rh_sample_idm, mms_la_sample_idm))
         result_rsfc_rh_mms_ra.append(
-            spearmanr(rsfc_rh_sample_rdm, mms_ra_sample_rdm))
+            spearmanr(rsfc_rh_sample_idm, mms_ra_sample_idm))
         result_rsfc_rh_mms_lh.append(
-            spearmanr(rsfc_rh_sample_rdm, mms_lh_sample_rdm))
+            spearmanr(rsfc_rh_sample_idm, mms_lh_sample_idm))
         result_rsfc_rh_mms_rh.append(
-            spearmanr(rsfc_rh_sample_rdm, mms_rh_sample_rdm))
+            spearmanr(rsfc_rh_sample_idm, mms_rh_sample_idm))
 
     configuration = dsf_x+'-'+dsf_y+'-' + \
-        str(P)+'-'+str(PS)+'-'+str(PM)+'-'+str(SC)
+        str(P)+'-'+str(PS)+'-'+str(PM)+'-'+str(SD)
 
     print(configuration)
 
@@ -242,7 +242,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
     del_data = [excluded_pair(d) for d in data]
     data = [data, del_data]
 
-    if mode == 'ToM-MMS':
+    if mode == 'IMQ-MMS':
 
         SS, SO, OS = load_IMQ_data(score=score)
         mms_la, mms_ra, mms_lh, mms_rh = load_mms_data()
@@ -255,7 +255,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
         if score == 'uvs':
             DSF_X = ['abs', 'mean', 'min', 'abs*mean', 'max']
 
-        if mms_pc == 'NP':
+        if mms_pc == 'NPP':
 
             for dsf_x in DSF_X:
                 for dsf_y in ['pearson', 'euclidean', 'cosine', 'manhattan']:
@@ -268,7 +268,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                 results = list(
                     tqdm(executor.map(ToM_MMS_job, parameter), total=5*4))
 
-        elif mms_pc == 'P':
+        elif mms_pc == 'PP':
 
             for dsf_x in DSF_X:
                 for dsf_y in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
@@ -285,7 +285,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                 results = list(
                     tqdm(executor.map(ToM_MMS_job, parameter), total=5*5*4*7))
 
-        elif mms_pc == 'PW':
+        elif mms_pc == 'PPw':
 
             for dsf_x in DSF_X:
                 for dsf_y in ['wrd', 'wmd']:
@@ -302,7 +302,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                 results = list(
                     tqdm(executor.map(ToM_MMS_job, parameter), total=5*2*2*8))
 
-        elif mms_pc == 'PSC':
+        elif mms_pc == 'CPP-SD':
 
             for dsf_x in DSF_X:
                 for dsf_y in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
