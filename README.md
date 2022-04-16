@@ -65,6 +65,8 @@ ___
 ___
 
 For bug reports, please contact Zhaoning Li ([yc17319@umac.mo](mailto:yc17319@umac.mo), or [@lizhn7](https://twitter.com/lizhn7)).
+
+Thanks to [Dr. Lei Zhang](https://github.com/lei-zhang) for the [good example](https://github.com/lei-zhang/SIT) and [shields.io](https://shields.io/).
 ___
 
 ## LICENSE
