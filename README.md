@@ -1,5 +1,8 @@
 # TRINITY <img src="https://raw.githubusercontent.com/andlab-um/trinity/main/demo.png" align="right" width="561px">
 
+https://img.shields.io/github/languages/code-size/andlab-um/trinity?color=brightgreen&label=repo%20size&logo=github
+
+[![GitHub repo size](https://img.shields.io/github/languages/code-size/andlab-um/trinity?color=brightgreen&label=repo%20size&logo=github)](https://github.com/andlab-um/trinity)
 [![DOI](https://img.shields.io/badge/DOI-10.1101%2F2022.04.11.487870-blue)](https://doi.org/10.1101/2022.04.11.487870)<br />
 [![Twitter URL](https://img.shields.io/twitter/url?label=%40lizhn7&style=social&url=https%3A%2F%2Ftwitter.com%2Flizhn7)](https://twitter.com/lizhn7)
 [![Twitter URL](https://img.shields.io/twitter/url?label=%40ANDlab3&style=social&url=https%3A%2F%2Ftwitter.com%2Flizhn7)](https://twitter.com/ANDlab3)
