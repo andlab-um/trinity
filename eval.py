@@ -410,12 +410,62 @@ def construct_parameter_configurations(mode):
         return parameters_npp, parameters_pp, parameters_ppw, parameters_cpp_sd, combination, titles
 
 
+def mean(result, n):
+
+    """
+    Compute the average IDM correspomndence from bootstrapping for each parameter configuration
+
+    Parameters
+    ----------
+    result: list.
+        The subject-wise bootstrapping results
+    n: int. 
+        The number of parameter configurations
+    """
+
+    return [np.mean(result[i][-1]) for i in range(n)]
 
 
+def ks_test(data):
 
+    """
+    Perform two-sided Kolmogorov-Smirnov tests to test the normality of the distribution
+    """
+    
+    print(kstest(np.array(data[0][-1])-np.array(data[1][-1]), cdf="norm"))
+    print(kstest(np.array(data[0][-1])-np.array(data[2][-1]), cdf="norm"))
+    print(kstest(np.array(data[0][-1])-np.array(data[3][-1]), cdf="norm"))
+    print(kstest(np.array(data[1][-1])-np.array(data[2][-1]), cdf="norm"))
+    print(kstest(np.array(data[1][-1])-np.array(data[3][-1]), cdf="norm"))
+    print(kstest(np.array(data[2][-1])-np.array(data[3][-1]), cdf="norm"))
+    
 
+def wcx_test(data):
 
-
+    """
+    Perform two-sided Wilcoxon signed-rank tests to test for significant differences among brain regions
+    """
+    
+    diffs, pvals = [], []
+    
+    stat_12 = np.mean(np.array(data[0][-1])-np.array(data[1][-1]))
+    stat_13 = np.mean(np.array(data[0][-1])-np.array(data[2][-1]))
+    stat_14 = np.mean(np.array(data[0][-1])-np.array(data[3][-1]))
+    stat_23 = np.mean(np.array(data[1][-1])-np.array(data[2][-1]))
+    stat_24 = np.mean(np.array(data[1][-1])-np.array(data[3][-1]))
+    stat_34 = np.mean(np.array(data[2][-1])-np.array(data[3][-1]))
+    
+    _, pval_12 = wilcoxon(data[0][-1], data[1][-1], alternative='two-sided')
+    _, pval_13 = wilcoxon(data[0][-1], data[2][-1], alternative='two-sided')
+    _, pval_14 = wilcoxon(data[0][-1], data[3][-1], alternative='two-sided')
+    _, pval_23 = wilcoxon(data[1][-1], data[2][-1], alternative='two-sided')
+    _, pval_24 = wilcoxon(data[1][-1], data[3][-1], alternative='two-sided')
+    _, pval_34 = wilcoxon(data[2][-1], data[3][-1], alternative='two-sided')
+    
+    diffs.append(stat_12); diffs.append(stat_13); diffs.append(stat_14); diffs.append(stat_23); diffs.append(stat_24); diffs.append(stat_34) 
+    pvals.append(pval_12); pvals.append(pval_13); pvals.append(pval_14); pvals.append(pval_23); pvals.append(pval_24); pvals.append(pval_34)
+        
+    return diffs, pvals
 
 
 
