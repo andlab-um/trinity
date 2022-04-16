@@ -7,6 +7,11 @@ import scipy.stats as st
 from statsmodels.stats.multitest import multipletests
 from scipy.stats import kstest, wilcoxon
 
+SS_mvs, SO_mvs, OS_mvs = load_IMQ_data(score='mvs')
+SS_uvs, SO_uvs, OS_uvs = load_IMQ_data(score='uvs', rank=False)
+mms_la, mms_ra, mms_lh, mms_rh = load_mms_data()
+rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh = load_rsfc_data()
+
 DSF_X_mvs = ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']
 DSF_X_uvs = ['abs', 'mean', 'min', 'abs*mean', 'max']
 
@@ -466,12 +471,3 @@ def wcx_test(data):
     pvals.append(pval_12); pvals.append(pval_13); pvals.append(pval_14); pvals.append(pval_23); pvals.append(pval_24); pvals.append(pval_34)
         
     return diffs, pvals
-
-
-
-
-
-
-
-
-

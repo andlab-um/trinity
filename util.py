@@ -186,7 +186,7 @@ def load_rsfc_data():
     Load Resting-state functional connectivity (rs-FC) data
     """
 
-    f = open('./data/rsfc.pkl', 'rb')
+    f = open('./data/rsfc/rsfc.pkl', 'rb')
     rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh = pickle.load(f)
 
     return rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh
