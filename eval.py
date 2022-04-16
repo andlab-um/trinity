@@ -186,7 +186,7 @@ def load_rsfc_data():
     Load Resting-state functional connectivity (rs-FC) data
     """
 
-    f = open('./data/rsfc/rsfc.pkl', 'rb')
+    f = open('./data/rsfc.pkl', 'rb')
     rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh = pickle.load(f)
 
     return rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh
@@ -398,7 +398,7 @@ def patch(data, pm=None, ps=(10, 10), sd=None):
                             list(np.min(np.array(p), axis=0))))
 
         if sd != None:
-            patch = build_rdm(np.array(patch), metric=sd)
+            patch = build_idm(np.array(patch), metric=sd)
 
         data_patch.append(patch)
 

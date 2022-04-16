@@ -2,3 +2,7 @@ code/bs_log/IMQ-MMS/mvs/PP/results.pkl filter=lfs diff=lfs merge=lfs -text
 code/bs_log/IMQ-MMS/uvs/PP/results.pkl filter=lfs diff=lfs merge=lfs -text
 code/bs_log/rsFC-MMS/CPP-SD/results.pkl filter=lfs diff=lfs merge=lfs -text
 code/bs_log/rsFC-MMS/PP/results.pkl filter=lfs diff=lfs merge=lfs -text
+bs_log/IMQ-MMS/mvs/PP/results.pkl filter=lfs diff=lfs merge=lfs -text
+bs_log/IMQ-MMS/uvs/PP/results.pkl filter=lfs diff=lfs merge=lfs -text
+bs_log/rsFC-MMS/CPP-SD/results.pkl filter=lfs diff=lfs merge=lfs -text
+bs_log/rsFC-MMS/PP/results.pkl filter=lfs diff=lfs merge=lfs -text

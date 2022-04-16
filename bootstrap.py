@@ -228,7 +228,28 @@ def rsFC_MMS_job(p):
     return configuration, result_rsfc_la_mms_la, result_rsfc_la_mms_ra, result_rsfc_la_mms_lh, result_rsfc_la_mms_rh, result_rsfc_ra_mms_la, result_rsfc_ra_mms_ra, result_rsfc_ra_mms_lh, result_rsfc_ra_mms_rh, result_rsfc_lh_mms_la, result_rsfc_lh_mms_ra, result_rsfc_lh_mms_lh, result_rsfc_lh_mms_rh, result_rsfc_rh_mms_la, result_rsfc_rh_mms_ra, result_rsfc_rh_mms_lh, result_rsfc_rh_mms_rh
 
 
-def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
+def bootstrapping(mode, score='mvs', mms_pc=None, mw=48, size=1000):
+
+    """
+    Conduct subject-wise bootstapping for possible parameter configurations
+
+    Parameters
+    ----------
+    mode: string 'IMQ-MMS' or 'IMQ-rsFC' or 'rsFC-MMS'.
+        The combination between two modalities.
+    score: string 'mvs' or 'uvs'. Default is 'mvs'.
+        'Mvs' for multivariate representations, i.e., normalised item-wise IMQ scores, 
+        'Uvs' for univariate representations, i.e, scalar summary IMQ scores.
+    mms_pc: string 'NPP' or 'PP' or 'PPw' or 'CPP-SD'. Default is None.
+        The pipeline to construct inter-subject MMS dissimilarity matrix.
+        'NPP' for without patching and pooling operations and computing surface distance,
+        'PP' or 'PPw' (wmd and wrd) for with patching and pooling operations but without computing surface distance,
+        'CPP-SD' for computing patching and pooling operations-based surface distance.
+    mw: int. Default is 48.
+        Maximum number of workers that can be simulatenously active at the same time
+    size: int. Default is 1000.
+        The repetitions numbers for subject-wise bootstapping.
+    """
 
     parameter = []
     order = np.arange(24)
@@ -266,7 +287,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
 
             with concurrent.futures.ProcessPoolExecutor(max_workers=mw) as executor:
                 results = list(
-                    tqdm(executor.map(ToM_MMS_job, parameter), total=5*4))
+                    tqdm(executor.map(IMQ_MMS_job, parameter), total=5*4))
 
         elif mms_pc == 'PP':
 
@@ -275,15 +296,15 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                     for P in [True]:
                         for PS in [(5, 5), (10, 10), (25, 25), (50, 50)]:
                             for PM in ['max', 'mean', 'min', 'max-mean', 'max-min', 'mean-min', 'mmm']:
-                                for SC in [None]:
+                                for SD in [None]:
 
-                                    mms = P, PS, PM, SC
+                                    mms = P, PS, PM, SD
                                     parameter.append(
                                         (dsf_x, dsf_y, mms, data, SS, SO, OS, mms_la, mms_ra, mms_lh, mms_rh))
 
             with concurrent.futures.ProcessPoolExecutor(max_workers=mw) as executor:
                 results = list(
-                    tqdm(executor.map(ToM_MMS_job, parameter), total=5*5*4*7))
+                    tqdm(executor.map(IMQ_MMS_job, parameter), total=5*5*4*7))
 
         elif mms_pc == 'PPw':
 
@@ -292,15 +313,15 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                     for P in [True]:
                         for PS in [(25, 25), (50, 50)]:
                             for PM in [None, 'max', 'mean', 'min', 'max-mean', 'max-min', 'mean-min', 'mmm']:
-                                for SC in [None]:
+                                for SD in [None]:
 
-                                    mms = P, PS, PM, SC
+                                    mms = P, PS, PM, SD
                                     parameter.append(
                                         (dsf_x, dsf_y, mms, data, SS, SO, OS, mms_la, mms_ra, mms_lh, mms_rh))
 
             with concurrent.futures.ProcessPoolExecutor(max_workers=mw) as executor:
                 results = list(
-                    tqdm(executor.map(ToM_MMS_job, parameter), total=5*2*2*8))
+                    tqdm(executor.map(IMQ_MMS_job, parameter), total=5*2*2*8))
 
         elif mms_pc == 'CPP-SD':
 
@@ -309,15 +330,15 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                     for P in [True]:
                         for PS in [(25, 25), (50, 50)]:
                             for PM in [None, 'max', 'mean', 'min', 'max-mean', 'max-min', 'mean-min', 'mmm']:
-                                for SC in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
+                                for SD in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
 
-                                    mms = P, PS, PM, SC
+                                    mms = P, PS, PM, SD
                                     parameter.append(
                                         (dsf_x, dsf_y, mms, data, SS, SO, OS, mms_la, mms_ra, mms_lh, mms_rh))
 
             with concurrent.futures.ProcessPoolExecutor(max_workers=mw) as executor:
                 results = list(
-                    tqdm(executor.map(ToM_MMS_job, parameter), total=5*5*2*8*5))
+                    tqdm(executor.map(IMQ_MMS_job, parameter), total=5*5*2*8*5))
 
         result_ss_mms_la = [(r[0], r[1]) for r in results]
         result_ss_mms_ra = [(r[0], r[2]) for r in results]
@@ -334,11 +355,11 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
         result_os_mms_lh = [(r[0], r[11]) for r in results]
         result_os_mms_rh = [(r[0], r[12]) for r in results]
 
-        f = open('./log/ToM-MMS/'+score+'/'+mms_pc+'/results.pkl', 'wb')
+        f = open('./bs_log/IMQ-MMS/'+score+'/'+mms_pc+'/results.pkl', 'wb')
         pickle.dump((result_ss_mms_la, result_ss_mms_ra, result_ss_mms_lh, result_ss_mms_rh, result_so_mms_la, result_so_mms_ra,
                     result_so_mms_lh, result_so_mms_rh, result_os_mms_la, result_os_mms_ra, result_os_mms_lh, result_os_mms_rh), f)
 
-    elif mode == 'ToM-rsFC':
+    elif mode == 'IMQ-rsFC':
 
         SS, SO, OS = load_IMQ_data(score=score)
         rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh = load_rsfc_data()
@@ -359,7 +380,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
 
         with concurrent.futures.ProcessPoolExecutor(max_workers=mw) as executor:
             results = list(
-                tqdm(executor.map(ToM_rsFC_job, parameter), total=5*5))
+                tqdm(executor.map(IMQ_rsFC_job, parameter), total=5*5))
 
         result_ss_rsfc_la = [(r[0], r[1]) for r in results]
         result_ss_rsfc_ra = [(r[0], r[2]) for r in results]
@@ -376,7 +397,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
         result_os_rsfc_lh = [(r[0], r[11]) for r in results]
         result_os_rsfc_rh = [(r[0], r[12]) for r in results]
 
-        f = open('./log/ToM-rsFC/'+score+'/results.pkl', 'wb')
+        f = open('./bs_log/IMQ-rsFC/'+score+'/results.pkl', 'wb')
         pickle.dump((result_ss_rsfc_la, result_ss_rsfc_ra, result_ss_rsfc_lh, result_ss_rsfc_rh, result_so_rsfc_la, result_so_rsfc_ra,
                     result_so_rsfc_lh, result_so_rsfc_rh, result_os_rsfc_la, result_os_rsfc_ra, result_os_rsfc_lh, result_os_rsfc_rh), f)
 
@@ -389,7 +410,7 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
         result_rsfc_lh_mms_la, result_rsfc_lh_mms_ra, result_rsfc_lh_mms_lh, result_rsfc_lh_mms_rh = [], [], [], []
         result_rsfc_rh_mms_la, result_rsfc_rh_mms_ra, result_rsfc_rh_mms_lh, result_rsfc_rh_mms_rh = [], [], [], []
 
-        if mms_pc == 'NP':
+        if mms_pc == 'NPP':
 
             for dsf_x in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
                 for dsf_y in ['pearson', 'euclidean', 'cosine', 'manhattan']:
@@ -401,16 +422,16 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                 results = list(
                     tqdm(executor.map(rsFC_MMS_job, parameter), total=5*4))
 
-        elif mms_pc == 'P':
+        elif mms_pc == 'PP':
 
             for dsf_x in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
                 for dsf_y in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
                     for P in [True]:
                         for PS in [(5, 5), (10, 10), (25, 25), (50, 50)]:
                             for PM in ['max', 'mean', 'min', 'max-mean', 'max-min', 'mean-min', 'mmm']:
-                                for SC in [None]:
+                                for SD in [None]:
 
-                                    mms = P, PS, PM, SC
+                                    mms = P, PS, PM, SD
                                     parameter.append((dsf_x, dsf_y, mms, data, rsfc_la,
                                                      rsfc_ra, rsfc_lh, rsfc_rh, mms_la, mms_ra, mms_lh, mms_rh))
 
@@ -418,16 +439,16 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                 results = list(
                     tqdm(executor.map(rsFC_MMS_job, parameter), total=5*5*4*7))
 
-        elif mms_pc == 'PW':
+        elif mms_pc == 'PPw':
 
             for dsf_x in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
                 for dsf_y in ['wrd', 'wmd']:
                     for P in [True]:
                         for PS in [(25, 25), (50, 50)]:
                             for PM in [None, 'max', 'mean', 'min', 'max-mean', 'max-min', 'mean-min', 'mmm']:
-                                for SC in [None]:
+                                for SD in [None]:
 
-                                    mms = P, PS, PM, SC
+                                    mms = P, PS, PM, SD
                                     parameter.append(
                                         (dsf_x, dsf_y, mms, data, rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh, mms_la, mms_ra, mms_lh, mms_rh))
 
@@ -435,16 +456,16 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
                 results = list(
                     tqdm(executor.map(rsFC_MMS_job, parameter), total=5*2*2*8))
 
-        elif mms_pc == 'PSC':
+        elif mms_pc == 'CPP-SD':
 
             for dsf_x in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
                 for dsf_y in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
                     for P in [True]:
                         for PS in [(25, 25), (50, 50)]:
                             for PM in [None, 'max', 'mean', 'min', 'max-mean', 'max-min', 'mean-min', 'mmm']:
-                                for SC in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
+                                for SD in ['pearson', 'euclidean', 'mahalanobis', 'cosine', 'manhattan']:
 
-                                    mms = P, PS, PM, SC
+                                    mms = P, PS, PM, SD
                                     parameter.append((dsf_x, dsf_y, mms, data, rsfc_la,
                                                      rsfc_ra, rsfc_lh, rsfc_rh, mms_la, mms_ra, mms_lh, mms_rh))
 
@@ -472,17 +493,31 @@ def bootstrapping(mode, score, mms_pc=None, mw=48, size=1000):
         result_rsfc_rh_mms_lh = [(r[0], r[15]) for r in results]
         result_rsfc_rh_mms_rh = [(r[0], r[16]) for r in results]
 
-        f = open('./log/rsFC-MMS/'+mms_pc+'/results.pkl', 'wb')
+        f = open('./bs_log/rsFC-MMS/'+mms_pc+'/results.pkl', 'wb')
         pickle.dump((result_rsfc_la_mms_la, result_rsfc_la_mms_ra, result_rsfc_la_mms_lh, result_rsfc_la_mms_rh, result_rsfc_ra_mms_la, result_rsfc_ra_mms_ra, result_rsfc_ra_mms_lh, result_rsfc_ra_mms_rh,
                     result_rsfc_lh_mms_la, result_rsfc_lh_mms_ra, result_rsfc_lh_mms_lh, result_rsfc_lh_mms_rh, result_rsfc_rh_mms_la, result_rsfc_rh_mms_ra, result_rsfc_rh_mms_lh, result_rsfc_rh_mms_rh), f)
 
 
 if __name__ == '__main__':
 
-    score = 'mvs'
+    #mw = 10
+    #size = 1000
+    #score = 'mvs'
+    
+    #bootstrapping('IMQ-MMS', score, mms_pc='NPP', mw=mw, size=size)
+    #bootstrapping('IMQ-MMS', score, mms_pc='PP', mw=mw, size=size)
+    #bootstrapping('IMQ-MMS', score, mms_pc='PPw', mw=mw, size=size)
+    #bootstrapping('IMQ-MMS', score, mms_pc='CPP-SD', mw=mw, size=size)
+    #bootstrapping('IMQ-rsFC', score, mw=mw, size=size)
+    #bootstrapping('rsFC-MMS', mms_pc='NPP', mw=mw, size=size)
+    #bootstrapping('rsFC-MMS', mms_pc='PP', mw=mw, size=size)
+    #bootstrapping('rsFC-MMS', mms_pc='PPw', mw=mw, size=size)
+    #bootstrapping('rsFC-MMS', mms_pc='CPP-SD', mw=mw, size=size)
 
-    #bootstrapping('ToM-MMS', score, 'NP', size=1000)
-    #bootstrapping('ToM-MMS', score, 'P', size=1000)
-    #bootstrapping('ToM-MMS', score, 'PW', size=1000)
-    #bootstrapping('ToM-MMS', score, 'PSC', size=1000)
-    #bootstrapping('ToM-rsFC', score, size=1000)
+    #score = 'uvs'
+    
+    #bootstrapping('IMQ-MMS', score, mms_pc='NPP', mw=mw, size=size)
+    #bootstrapping('IMQ-MMS', score, mms_pc='PP', mw=mw, size=size)
+    #bootstrapping('IMQ-MMS', score, mms_pc='PPw', mw=mw, size=size)
+    #bootstrapping('IMQ-MMS', score, mms_pc='CPP-SD', mw=mw, size=size)
+    #bootstrapping('IMQ-rsFC', score, mw=mw, size=size)
