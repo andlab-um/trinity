@@ -10,6 +10,8 @@ ___
 - CPP-SD robustly improved the relatedness between MMS and the other two modalities.
 ___
 
+## Structure
+
 **This repository contains:**
 ```
 root
