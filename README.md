@@ -1,7 +1,18 @@
 # TRINITY
 **Every individual makes a difference:** A trinity derived from linking individual brain morphometry, connectivity and mentalising ability
 
-Coming soon
+___
+**This repository contains:**
+```
+root
+ ├── data # Preprocessed behavioral data & fMRI BOLD time series data
+ │    ├── behavioral
+ │    ├── fMRI
+ ├── code # Matlab, R, & Stan code to run analyses and produce figures
+ │    ├── behavioral
+ │    ├── fMRI
+ │    ├── stanmodel
+```
 
 ___
 
