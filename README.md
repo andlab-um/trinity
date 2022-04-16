@@ -1,7 +1,15 @@
 # TRINITY
 **Every individual makes a difference:** A trinity derived from linking individual brain morphometry, connectivity and mentalising ability
-
 ___
+
+## Highlights
+- A trinity existed in idiosyncratic patterns of brain MMS, rs-FC and IMQ scores.
+- A region-related mentalising specificity emerged from this trinity.
+- Rs-FC gates the MMS predicted similarity in mentalising ability.
+- IS-RSA can be used to link brain morphometry, connectivity and mentalising ability.
+- CPP-SD robustly improved the relatedness between MMS and the other two modalities.
+___
+
 **This repository contains:**
 ```
 root
@@ -44,6 +52,8 @@ ___
 	     eprint = {https://www.biorxiv.org/content/early/2022/04/14/2022.04.11.487870.full.pdf},
 	     journal = {bioRxiv}
     }
+    
+___
 
 ## LICENSE
 
