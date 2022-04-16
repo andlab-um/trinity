@@ -31,7 +31,21 @@ root
 **Note 3**: to reproduce figure 3, you may need version 3.7 of Python. <br />
 ___
 
-### LICENSE
+## Citation
+
+    @article {Li2022.04.11.487870,
+      author = {Li, Zhaoning and Dong, Qunxi and Hu, Bin and Wu, Haiyan},
+	     title = {Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability},
+	     elocation-id = {2022.04.11.487870},
+	     year = {2022},
+	     doi = {10.1101/2022.04.11.487870},
+	     publisher = {Cold Spring Harbor Laboratory},
+	     URL = {https://www.biorxiv.org/content/early/2022/04/14/2022.04.11.487870},
+	     eprint = {https://www.biorxiv.org/content/early/2022/04/14/2022.04.11.487870.full.pdf},
+	     journal = {bioRxiv}
+    }
+
+## LICENSE
 
 This license (CC BY-NC 4.0) gives you the right to re-use and adapt, as long as you note any changes you made, and provide a link to the original source. Read [here](https://creativecommons.org/licenses/by-nc/4.0/) for more details. 
 
