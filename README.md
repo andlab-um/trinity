@@ -1,4 +1,4 @@
-# TRINITY <img src="https://raw.githubusercontent.com/andlab-um/trinity/main/demo.png" align="center" width="666px">
+# TRINITY <img src="https://raw.githubusercontent.com/andlab-um/trinity/main/demo.png" align="center" width="500px">
 
 [![DOI](https://img.shields.io/badge/DOI-10.1101%2F2022.04.11.487870-blue)](https://doi.org/10.1101/2022.04.11.487870)<br />
 [![Twitter URL](https://img.shields.io/twitter/url?label=%40lizhn7&style=social&url=https%3A%2F%2Ftwitter.com%2Flizhn7)](https://twitter.com/lizhn7)
