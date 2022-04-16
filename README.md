@@ -1,5 +1,4 @@
 # TRINITY
-**Every individual makes a difference:** A trinity derived from linking individual brain morphometry, connectivity and mentalising ability
 
 **Li, Z., Dong, Q., Hu, B., & Wu, H. (2022). Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability.** *bioRxiv*. <br />
 [DOI: 10.1101/2022.04.11.487870](https://doi.org/10.1101/2022.04.11.487870).
