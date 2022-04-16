@@ -6,9 +6,11 @@ from util import *
 import scipy.stats as st
 from statsmodels.stats.multitest import multipletests
 from scipy.stats import kstest, wilcoxon
+from pandas.core.frame import DataFrame
+from scipy.stats import zscore
 
 SS_mvs, SO_mvs, OS_mvs = load_IMQ_data(score='mvs')
-SS_uvs, SO_uvs, OS_uvs = load_IMQ_data(score='uvs', rank=False)
+SS_uvs, SO_uvs, OS_uvs = load_IMQ_data(score='uvs')
 mms_la, mms_ra, mms_lh, mms_rh = load_mms_data()
 rsfc_la, rsfc_ra, rsfc_lh, rsfc_rh = load_rsfc_data()
 
