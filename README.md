@@ -20,7 +20,7 @@ ___
 
 ## Outreach
 
-- A poster for the Social & Affective Neuroscience Society (SANS) Annual Meeting 2022 is available on [ResearchGate](https://www.researchgate.net/publication/360262009_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability)
+- A poster for the Social & Affective Neuroscience Society (SANS) Annual Meeting 2022 is available on [ResearchGate](https://www.researchgate.net/publication/360262009_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
 - A 4.6-min video for the SANS 2022 is available on [YouTube](https://youtu.be/kmTiUy0SowA). The related slides are available on [ResearchGate](https://www.researchgate.net/publication/360262895_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
 ___
 
@@ -65,8 +65,8 @@ ___
 	     year = {2022},
 	     doi = {10.1101/2022.04.11.487870},
 	     publisher = {Cold Spring Harbor Laboratory},
-	     URL = {https://www.biorxiv.org/content/early/2022/04/14/2022.04.11.487870},
-	     eprint = {https://www.biorxiv.org/content/early/2022/04/14/2022.04.11.487870.full.pdf},
+	     URL = {https://www.biorxiv.org/content/early/2022/04/24/2022.04.11.487870},
+	     eprint = {https://www.biorxiv.org/content/early/2022/04/24/2022.04.11.487870.full.pdf},
 	     journal = {bioRxiv}
     }
     
