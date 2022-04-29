@@ -18,6 +18,12 @@ ___
 - CPP-SD robustly improved the relatedness between MMS and the other two modalities.
 ___
 
+## Outreach
+
+- A poster for Social & Affective Neuroscience Society (SANS) Annual Meeting 2022 is available on [ResearchGate](https://www.researchgate.net/publication/360262009_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability)
+- A 4.6-min video for SANS 2022 is available on [YouTube](https://youtu.be/kmTiUy0SowA). The slides is available on [ResearchGate](https://www.researchgate.net/publication/360262895_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
+___
+
 ## Structure
 
 **This repository contains:**
