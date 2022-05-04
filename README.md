@@ -22,8 +22,8 @@ ___
 
 - A poster for the Social & Affective Neuroscience Society (SANS) Annual Meeting 2022 is available on [ResearchGate](https://www.researchgate.net/publication/360262009_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
 - A 4.6-min video for the SANS 2022 is available on [YouTube](https://youtu.be/kmTiUy0SowA). The related slides are available on [ResearchGate](https://www.researchgate.net/publication/360262895_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
-- [IMQ: Interactive mentalising questionnaire](https://github.com/andlab-um/IMQ)
-- [Previous resting-network study](https://github.com/andlab-um/restDishonesty)
+- [IMQ: Interactive mentalising questionnaire](https://github.com/andlab-um/IMQ).
+- [Previous resting-network study](https://github.com/andlab-um/restDishonesty).
 ___
 
 ## Structure
