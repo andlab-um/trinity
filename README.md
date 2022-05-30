@@ -81,6 +81,4 @@ ___
 
 ## LICENSE
 
-This license (CC BY-NC 4.0) gives you the right to re-use and adapt, as long as you note any changes you made, and provide a link to the original source. Read [here](https://creativecommons.org/licenses/by-nc/4.0/) for more details. 
-
-![](https://upload.wikimedia.org/wikipedia/commons/9/99/Cc-by-nc_icon.svg)
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>, which gives you the right to re-use and adapt, as long as you note any changes you made, and provide a link to the original source.
