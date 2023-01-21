@@ -455,7 +455,7 @@ def wcx_test(data):
     Perform two-sided Wilcoxon signed-rank tests to test for significant differences among brain regions
     """
     
-    diffs, pvals = [], []
+    diffs, zvals, pvals = [], [], []
     
     stat_12 = np.mean(np.array(data[0][-1])-np.array(data[1][-1]))
     stat_13 = np.mean(np.array(data[0][-1])-np.array(data[2][-1]))
@@ -464,17 +464,37 @@ def wcx_test(data):
     stat_24 = np.mean(np.array(data[1][-1])-np.array(data[3][-1]))
     stat_34 = np.mean(np.array(data[2][-1])-np.array(data[3][-1]))
     
-    _, pval_12 = wilcoxon(data[0][-1], data[1][-1], alternative='two-sided')
-    _, pval_13 = wilcoxon(data[0][-1], data[2][-1], alternative='two-sided')
-    _, pval_14 = wilcoxon(data[0][-1], data[3][-1], alternative='two-sided')
-    _, pval_23 = wilcoxon(data[1][-1], data[2][-1], alternative='two-sided')
-    _, pval_24 = wilcoxon(data[1][-1], data[3][-1], alternative='two-sided')
-    _, pval_34 = wilcoxon(data[2][-1], data[3][-1], alternative='two-sided')
+    l_12, h_12 = st.norm.interval(alpha=0.95,
+                                  loc=stat_12,
+                                  scale=st.sem(np.array(data[0][-1])-np.array(data[1][-1])))
+    l_13, h_13 = st.norm.interval(alpha=0.95,
+                                  loc=stat_13,
+                                  scale=st.sem(np.array(data[0][-1])-np.array(data[2][-1])))
+    l_14, h_14 = st.norm.interval(alpha=0.95,
+                                  loc=stat_14,
+                                  scale=st.sem(np.array(data[0][-1])-np.array(data[3][-1])))
+    l_23, h_23 = st.norm.interval(alpha=0.95,
+                                  loc=stat_23,
+                                  scale=st.sem(np.array(data[1][-1])-np.array(data[2][-1])))
+    l_24, h_24 = st.norm.interval(alpha=0.95,
+                                  loc=stat_24,
+                                  scale=st.sem(np.array(data[1][-1])-np.array(data[3][-1])))
+    l_34, h_34 = st.norm.interval(alpha=0.95,
+                                  loc=stat_34,
+                                  scale=st.sem(np.array(data[2][-1])-np.array(data[3][-1])))
     
-    diffs.append(stat_12); diffs.append(stat_13); diffs.append(stat_14); diffs.append(stat_23); diffs.append(stat_24); diffs.append(stat_34) 
-    pvals.append(pval_12); pvals.append(pval_13); pvals.append(pval_14); pvals.append(pval_23); pvals.append(pval_24); pvals.append(pval_34)
+    r_12 = wilcoxon(data[0][-1], data[1][-1], alternative='two-sided', method='approx')
+    r_13 = wilcoxon(data[0][-1], data[2][-1], alternative='two-sided', method='approx')
+    r_14 = wilcoxon(data[0][-1], data[3][-1], alternative='two-sided', method='approx')
+    r_23 = wilcoxon(data[1][-1], data[2][-1], alternative='two-sided', method='approx')
+    r_24 = wilcoxon(data[1][-1], data[3][-1], alternative='two-sided', method='approx')
+    r_34 = wilcoxon(data[2][-1], data[3][-1], alternative='two-sided', method='approx')
+    
+    diffs.append((stat_12, l_12, h_12)); diffs.append((stat_13, l_13, h_13)); diffs.append((stat_14, l_14, h_14)); diffs.append((stat_23, l_23, h_23)); diffs.append((stat_24, l_24, h_24)); diffs.append((stat_34, l_34, h_34))
+    zvals.append(r_12.zstatistic); zvals.append(r_13.zstatistic); zvals.append(r_14.zstatistic); zvals.append(r_23.zstatistic); zvals.append(r_24.zstatistic); zvals.append(r_34.zstatistic)
+    pvals.append(r_12.pvalue); pvals.append(r_13.pvalue); pvals.append(r_14.pvalue); pvals.append(r_23.pvalue); pvals.append(r_24.pvalue); pvals.append(r_34.pvalue)
         
-    return diffs, pvals
+    return diffs, zvals, pvals
 
 
 def model_selection(results, combination, parameters, titles, mms_pc=None, show=False):
