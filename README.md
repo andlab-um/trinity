@@ -1,21 +1,14 @@
 # TRINITY <img src="https://raw.githubusercontent.com/andlab-um/trinity/main/demo.png" align="right" width="561px">
 
 [![GitHub repo size](https://img.shields.io/github/languages/code-size/andlab-um/trinity?color=brightgreen&label=repo%20size&logo=github)](https://github.com/andlab-um/trinity)
-[![DOI](https://img.shields.io/badge/DOI-10.1101%2F2022.04.11.487870-blue)](https://doi.org/10.1101/2022.04.11.487870)<br />
+[![DOI](https://img.shields.io/badge/DOI-10.1002%2Fhbm.26285-blue)](https://doi.org/10.1002/hbm.26285)<br />
 [![Twitter URL](https://img.shields.io/twitter/url?label=%40lizhn7&style=social&url=https%3A%2F%2Ftwitter.com%2Flizhn7)](https://twitter.com/lizhn7)
-[![Twitter URL](https://img.shields.io/twitter/url?label=%40ANDlab3&style=social&url=https%3A%2F%2Ftwitter.com%2Flizhn7)](https://twitter.com/ANDlab3)
+[![Twitter URL](https://img.shields.io/twitter/url?label=%40ANDlab3&style=social&url=https%3A%2F%2Ftwitter.com%2Flizhn7)](https://twitter.com/ANDlab3)  
+[![Mastodon](https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white)](https://sciences.social/@lizhn7)
 
 **Code and data for: <br />**
-**Li, Z., Dong, Q., Hu, B., & Wu, H. (2022). Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability.** *bioRxiv*. <br />
-[DOI: 10.1101/2022.04.11.487870](https://doi.org/10.1101/2022.04.11.487870).
-___
-
-## Highlights
-- A trinity existed in idiosyncratic patterns of brain MMS, rs-FC and IMQ scores.
-- A region-related mentalising specificity emerged from this trinity.
-- Rs-FC gates the MMS predicted similarity in mentalising ability.
-- IS-RSA can be used to link brain morphometry, connectivity and mentalising ability.
-- CPP-SD robustly improved the relatedness between MMS and the other two modalities.
+Li, Z., Dong, Q., Hu, B., & Wu, H. (2023). Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability. *Human Brain Mapping*, 1-16. <br />
+[https://doi.org/10.1002/hbm.26285](https://doi.org/10.1002/hbm.26285)
 ___
 
 ## Outreach
