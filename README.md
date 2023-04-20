@@ -1,4 +1,4 @@
-# TRINITY <img src="https://raw.githubusercontent.com/andlab-um/trinity/main/demo.png" align="right" width="561px">
+# TRINITY <img src="https://raw.githubusercontent.com/andlab-um/trinity/main/early_view.png" align="right" width="512px">
 
 [![GitHub repo size](https://img.shields.io/github/languages/code-size/andlab-um/trinity?color=brightgreen&label=repo%20size&logo=github)](https://github.com/andlab-um/trinity)
 [![DOI](https://img.shields.io/badge/DOI-10.1002%2Fhbm.26285-blue)](https://doi.org/10.1002/hbm.26285)<br />
@@ -15,13 +15,15 @@ ___
 
 - A poster for the Social & Affective Neuroscience Society (SANS) Annual Meeting 2022 is available on [ResearchGate](https://www.researchgate.net/publication/360262009_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
 - A 4.6-min video for the SANS 2022 is available on [YouTube](https://youtu.be/kmTiUy0SowA). The related slides are available on [ResearchGate](https://www.researchgate.net/publication/360262895_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
-- [IMQ: Interactive mentalising questionnaire](https://github.com/andlab-um/IMQ).
+- A poster for the 3rd Macau Symposium on Cognitive and  Brain Sciences is available [ResearchGate](https://www.researchgate.net/publication/365475694_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
+- The sildes for 2022 National Doctoral Forum on Brain-Computer Intelligence and Psychology are available [here](https://nbviewer.org/github/Das-Boot/Das-Boot/blob/main/resources/20221119_1.pdf).
+- Social media: [Twitter](), [Mastodon](), [WeChat]().
+- [IMQ: Interactive mentalisation questionnaire](https://github.com/andlab-um/IMQ).
 - [Previous resting-network study](https://github.com/andlab-um/restDishonesty).
 ___
 
 ## Structure
 
-**This repository contains:**
 ```
 root
  ├── data               # Preprocessed regression data & psychometric data & morphometry data & rs-FC data
@@ -52,19 +54,16 @@ root
 ___
 
 ## Citation
-
-    @article {Li2022.04.11.487870,
-      author = {Li, Zhaoning and Dong, Qunxi and Hu, Bin and Wu, Haiyan},
-      title = {Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability},
-      elocation-id = {2022.04.11.487870},
-      year = {2022},
-      doi = {10.1101/2022.04.11.487870},
-      publisher = {Cold Spring Harbor Laboratory},
-      URL = {https://www.biorxiv.org/content/early/2022/04/24/2022.04.11.487870},
-      eprint = {https://www.biorxiv.org/content/early/2022/04/24/2022.04.11.487870.full.pdf},
-      journal = {bioRxiv}
-    }
     
+    @article{Li2023,
+      author = {Zhaoning Li and Qunxi Dong and Bin Hu and Haiyan Wu},
+      doi = {10.1002/hbm.26285},
+      journal = {Human Brain Mapping},
+      month = {4},
+      title = {Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability},
+      url = {https://onlinelibrary.wiley.com/doi/10.1002/hbm.26285},
+      year = {2023},
+    }
 ___
 
 For bug reports, please contact Zhaoning Li ([yc17319@umac.mo](mailto:yc17319@umac.mo), or [@lizhn7](https://twitter.com/lizhn7)).
