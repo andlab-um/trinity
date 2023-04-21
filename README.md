@@ -17,7 +17,7 @@ ___
 - A 4.6-min video for the SANS 2022 is available on [YouTube](https://youtu.be/kmTiUy0SowA). The related slides are available on [ResearchGate](https://www.researchgate.net/publication/360262895_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
 - A poster for the 3rd Macau Symposium on Cognitive and  Brain Sciences is available [ResearchGate](https://www.researchgate.net/publication/365475694_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
 - The sildes for 2022 National Doctoral Forum on Brain-Computer Intelligence and Psychology are available [here](https://nbviewer.org/github/Das-Boot/Das-Boot/blob/main/resources/20221119_1.pdf).
-- Social media: [Twitter](https://twitter.com/lizhn7/status/1649063255141421058), [Mastodon](https://sciences.social/@lizhn7/110231722750802324), [WeChat]().
+- Social media: [Twitter](https://twitter.com/lizhn7/status/1649063255141421058), [Mastodon](https://sciences.social/@lizhn7/110231722750802324), [WeChat](https://mp.weixin.qq.com/s/_ClZmFWORWnjMKWHUsHUvw).
 - [IMQ: Interactive mentalisation questionnaire](https://github.com/andlab-um/IMQ).
 - [Previous resting-network study](https://github.com/andlab-um/restDishonesty).
 ___
