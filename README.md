@@ -7,7 +7,7 @@
 [![Mastodon](https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white)](https://sciences.social/@lizhn7)
 
 **Code and data for: <br />**
-Li, Z., Dong, Q., Hu, B., & Wu, H. (2023). Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability. *Human Brain Mapping*, 1-16. <br />
+Li, Z., Dong, Q., Hu, B., & Wu, H. (2023). Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability. *Human Brain Mapping*, *44*(8), 3343-3358. <br />
 [https://doi.org/10.1002/hbm.26285](https://doi.org/10.1002/hbm.26285)
 ___
 
@@ -17,7 +17,7 @@ ___
 - A 4.6-min video for the SANS 2022 is available on [YouTube](https://youtu.be/kmTiUy0SowA). The related slides are available on [ResearchGate](https://www.researchgate.net/publication/360262895_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
 - A poster for the 3rd Macau Symposium on Cognitive and  Brain Sciences is available [ResearchGate](https://www.researchgate.net/publication/365475694_Every_individual_makes_a_difference_A_trinity_derived_from_linking_individual_brain_morphometry_connectivity_and_mentalising_ability).
 - The sildes for 2022 National Doctoral Forum on Brain-Computer Intelligence and Psychology are available [here](https://nbviewer.org/github/Das-Boot/Das-Boot/blob/main/resources/20221119_1.pdf).
-- Social media: [Twitter](https://twitter.com/lizhn7/status/1649063255141421058), [Mastodon](https://sciences.social/@lizhn7/110231722750802324), [WeChat](https://mp.weixin.qq.com/s/_ClZmFWORWnjMKWHUsHUvw).
+- Social media: [Twitter](https://twitter.com/lizhn7/status/1649063255141421058), [Mastodon](https://sciences.social/@lizhn7/110231722750802324), WeChat ([ANDlab](https://mp.weixin.qq.com/s/_ClZmFWORWnjMKWHUsHUvw), [brainnews](https://mp.weixin.qq.com/s/61WmEqzKMT7MnWBsK_0-hw), [Wiley NeuroPsycho](https://mp.weixin.qq.com/s/CKC0bDVgHZvqNh0r-o4DqA)).
 - [IMQ: Interactive mentalisation questionnaire](https://github.com/andlab-um/IMQ).
 - [Previous resting-network study](https://github.com/andlab-um/restDishonesty).
 ___
@@ -57,11 +57,13 @@ ___
     
     @article{Li2023,
       author = {Zhaoning Li and Qunxi Dong and Bin Hu and Haiyan Wu},
-      doi = {10.1002/hbm.26285},
-      journal = {Human Brain Mapping},
-      month = {4},
       title = {Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability},
-      url = {https://onlinelibrary.wiley.com/doi/10.1002/hbm.26285},
+      journal = {Human Brain Mapping},
+      volume = {44},
+      number = {8},
+      pages = {3343-3358},
+      doi = {https://doi.org/10.1002/hbm.26285},
+      url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.26285},
       year = {2023},
     }
 ___
