@@ -45,6 +45,7 @@ root
  ├── figure_2.ipynb     # To plot figure 2
  ├── figure_3.ipynb     # To plot figure 3
  ├── figure_9.ipynb     # To plot figure 9
+ ├── early_view.png
  ├── LICENSE
  └── README.md
 ```
