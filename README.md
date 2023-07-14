@@ -56,7 +56,7 @@ ___
 
 ## Citation
     
-    @article{Li2023,
+    @article{li2023Trinity,
       author = {Zhaoning Li and Qunxi Dong and Bin Hu and Haiyan Wu},
       title = {Every individual makes a difference: A trinity derived from linking individual brain morphometry, connectivity and mentalising ability},
       journal = {Human Brain Mapping},
